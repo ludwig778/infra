@@ -11,3 +11,9 @@ export SCW_DEFAULT_ZONE=fr-par-1
 export SCW_DEFAULT_REGION=fr-par
 export SCW_DEFAULT_ORGANIZATION_ID=*****
 ```
+
+... or for digital ocean
+
+```
+export DIGITALOCEAN_ACCESS_TOKEN=*****
+```

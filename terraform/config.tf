@@ -25,7 +25,7 @@ provider "kubernetes" {
 
 resource "local_file" "kube_config" {
   content = digitalocean_kubernetes_cluster.my_cluster.kube_config[0].raw_config
-  filename = "${path.module}/kube_config.yml"
+  filename = "${path.module}/kube_config"
 }
 
 output "public_ip" {

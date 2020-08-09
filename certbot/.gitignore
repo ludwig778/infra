@@ -1,0 +1,4 @@
+.credentials
+
+certbot_dirs*
+!certbot_dirs.tar.gz.gpg

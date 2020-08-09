@@ -1,0 +1,8 @@
+CERTBOT_DIR_NAME="certbot_dirs"
+CERTBOT_TARBALL_NAME="certbot_dirs.tar.gz"
+
+ISSUER_EMAIL=laurent.arthur75@gmail.com
+
+MAIN_DOMAIN=hartware.fr
+MAIN_WILDCARD=*.$MAIN_DOMAIN
+DEV_WILDCARD=*.dev.$MAIN_DOMAIN

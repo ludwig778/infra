@@ -4,5 +4,5 @@ lock:
 unlock:
 	./scripts/unlock_certs.sh
 
-setup:
+handle:
 	./scripts/manage_certs.sh

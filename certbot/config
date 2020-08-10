@@ -1,5 +1,6 @@
-CERTBOT_DIR_NAME="certbot_dirs"
-CERTBOT_TARBALL_NAME="certbot_dirs.tar.gz"
+CERTBOT_DIR="certbot_dirs"
+CERTBOT_ARCHIVE="$CERTBOT_DIR.tar.gz"
+CERTBOT_ENCRYPTED_ARCHIVE="ssl_archive"
 
 ISSUER_EMAIL=laurent.arthur75@gmail.com
 

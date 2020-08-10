@@ -1,9 +1,7 @@
+. ../config
+
 CERTBOT_DIR="certbot_dirs"
 CERTBOT_ARCHIVE="$CERTBOT_DIR.tar.gz"
 CERTBOT_ENCRYPTED_ARCHIVE="ssl_archive"
 
 ISSUER_EMAIL=laurent.arthur75@gmail.com
-
-MAIN_DOMAIN=hartware.fr
-MAIN_WILDCARD=*.$MAIN_DOMAIN
-DEV_WILDCARD=*.dev.$MAIN_DOMAIN

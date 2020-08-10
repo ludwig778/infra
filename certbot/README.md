@@ -30,14 +30,13 @@ POST /domain/zone/{domain.ext}/refresh
 DELETE /domain/zone/{domain.ext}/record/*
 ```
 
-Retrieve the application key, secret and consumer key and put them in a .credentials file (not to commit though) as such:
+Retrieve the application key, secret and consumer key and put them in the .envrc file of the parent folder as such:
 
-``` bash
-# cat .credentials
-dns_ovh_endpoint = ovh-eu
-dns_ovh_application_key = *APP_KEY*
-dns_ovh_application_secret = *APP_SECRET*
-dns_ovh_consumer_key = *CONSUMER_KEY*
+```
+export OVH_ENDPOINT=ovh-eu
+export OVH_APPLICATION_KEY=*****
+export OVH_APPLICATION_SECRET=*****
+export OVH_CONSUMER_KEY=*****
 ```
 
 Then run the handle Makefile target:

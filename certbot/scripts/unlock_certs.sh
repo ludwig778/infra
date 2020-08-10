@@ -20,7 +20,7 @@ then
 	echo "Error when decrypting $CERTBOT_DIR tarball"
 	exit 2
 fi
-exit 33
+
 if ! tar -zxvf $CERTBOT_ARCHIVE 1>/dev/null
 then
 	echo "Error when untar'ing' $CERTBOT_DIR"

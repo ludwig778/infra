@@ -1,7 +1,3 @@
-. ../config
-
 CERTBOT_DIR="certbot_dirs"
 CERTBOT_ARCHIVE="$CERTBOT_DIR.tar.gz"
 CERTBOT_ENCRYPTED_ARCHIVE="ssl_archive.gpg"
-
-ISSUER_EMAIL=laurent.arthur75@gmail.com

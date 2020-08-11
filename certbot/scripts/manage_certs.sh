@@ -31,6 +31,6 @@ certbot certonly \
 	--non-interactive \
 	--email $ISSUER_EMAIL \
 	-d $MAIN_DOMAIN \
-	-d $MAIN_WILDCARD \
-	-d $DEV_WILDCARD
+	-d *.$MAIN_DOMAIN \
+	-d *.dev.$MAIN_DOMAIN
 

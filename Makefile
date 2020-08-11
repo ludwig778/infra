@@ -1,10 +1,8 @@
-t_apply:
-	terraform apply -auto-approve
+lock:
+	make -C terraform lock
+	make -C certbot lock
 
-t_destroy:
-	terraform destroy -auto-approve
-
-t_output:
-	terraform output
-
+unlock:
+	make -C terraform unlock
+	make -C certbot unlock
 

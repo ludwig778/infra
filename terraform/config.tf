@@ -26,6 +26,32 @@ provider "kubernetes" {
   )
 }
 
+resource "digitalocean_loadbalancer" "public" {
+    name   = "kubernetes-load-balancer"
+    region = "lon1"
+
+    forwarding_rule {
+        entry_port     = 80
+        entry_protocol = "tcp"
+        target_port     = 80
+        target_protocol = "tcp"
+    }
+
+    forwarding_rule {
+        entry_port     = 443
+        entry_protocol = "tcp"
+        target_port     = 443
+        target_protocol = "tcp"
+    }
+
+    healthcheck {
+        port     = 22
+        protocol = "tcp"
+    }
+
+    droplet_ids = [for node in digitalocean_kubernetes_cluster.my_cluster.node_pool[0].nodes: node.droplet_id]
+}
+
 resource "local_file" "kube_config" {
   content = digitalocean_kubernetes_cluster.my_cluster.kube_config[0].raw_config
   filename = "${path.module}/kube_config"
@@ -38,7 +64,7 @@ resource "ovh_domain_zone_record" "main_domain" {
     subdomain = ""
     fieldtype = "A"
     ttl = "3600"
-    target = digitalocean_kubernetes_cluster.my_cluster.ipv4_address
+    target = digitalocean_loadbalancer.public.ip
 }
 
 resource "ovh_domain_zone_record" "main_subdomains" {
@@ -46,7 +72,7 @@ resource "ovh_domain_zone_record" "main_subdomains" {
     subdomain = "*"
     fieldtype = "A"
     ttl = "3600"
-    target = digitalocean_kubernetes_cluster.my_cluster.ipv4_address
+    target = digitalocean_loadbalancer.public.ip
 }
 
 resource "ovh_domain_zone_record" "dev_subdomains" {
@@ -54,9 +80,13 @@ resource "ovh_domain_zone_record" "dev_subdomains" {
     subdomain = "*.dev"
     fieldtype = "A"
     ttl = "3600"
-    target = digitalocean_kubernetes_cluster.my_cluster.ipv4_address
+    target = digitalocean_loadbalancer.public.ip
 }
 
-output "public_ip" {
-  value = digitalocean_kubernetes_cluster.my_cluster.ipv4_address
+output "kubernetes_cluster_ip" {
+    value = digitalocean_kubernetes_cluster.my_cluster.ipv4_address
+}
+
+output "load_balancer_ip" {
+    value = digitalocean_loadbalancer.public.ip
 }

@@ -18,3 +18,6 @@ lock:
 
 unlock:
 	./scripts/unlock_state.sh
+
+clean:
+	./scripts/clean_state.sh

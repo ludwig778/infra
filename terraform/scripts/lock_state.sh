@@ -27,6 +27,6 @@ then
 	exit 3
 fi
 
-rm -f terraform.tfstate terraform.tfstate.backup
-
 echo "Successfully locked state"
+
+./scripts/clean_state.sh

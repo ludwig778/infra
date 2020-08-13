@@ -32,5 +32,6 @@ certbot certonly \
 	--email $ISSUER_EMAIL \
 	-d $MAIN_DOMAIN \
 	-d *.$MAIN_DOMAIN \
+	-d *.in.$MAIN_DOMAIN \
 	-d *.dev.$MAIN_DOMAIN
 

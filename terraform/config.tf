@@ -75,6 +75,14 @@ resource "ovh_domain_zone_record" "main_subdomains" {
     target = digitalocean_loadbalancer.public.ip
 }
 
+resource "ovh_domain_zone_record" "in_subdomains" {
+    zone = var.main_domain
+    subdomain = "*.in"
+    fieldtype = "A"
+    ttl = "3600"
+    target = digitalocean_loadbalancer.public.ip
+}
+
 resource "ovh_domain_zone_record" "dev_subdomains" {
     zone = var.main_domain
     subdomain = "*.dev"

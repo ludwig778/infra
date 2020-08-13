@@ -1,4 +1,6 @@
 .terraform
 terraform.tfstate*
 
+crash.log
+
 kube_config

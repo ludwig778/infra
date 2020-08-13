@@ -29,7 +29,7 @@ certbot certonly \
 	--logs-dir $CERTBOT_DIR/log_dir \
 	--agree-tos \
 	--non-interactive \
-	--email $ISSUER_EMAIL \
+	--email $LETSENCRYPT_ISSUER_EMAIL \
 	-d $MAIN_DOMAIN \
 	-d *.$MAIN_DOMAIN \
 	-d *.in.$MAIN_DOMAIN \

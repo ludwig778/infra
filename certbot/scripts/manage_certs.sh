@@ -20,16 +20,21 @@ then
 	exit 3
 fi
 
-certbot certonly \
-	--dns-ovh \
-	--dns-ovh-credentials .credentials \
-	--dns-ovh-propagation-seconds 60 \
-	--config-dir $CERTBOT_DIR/config_dir \
-	--work-dir $CERTBOT_DIR/work_dir \
-	--logs-dir $CERTBOT_DIR/log_dir \
-	--agree-tos \
-	--non-interactive \
-	--email $LETSENCRYPT_ISSUER_EMAIL \
+function create_certs {
+	certbot certonly \
+		--dns-ovh \
+		--dns-ovh-credentials .credentials \
+		--dns-ovh-propagation-seconds 60 \
+		--config-dir $CERTBOT_DIR/config_dir \
+		--work-dir $CERTBOT_DIR/work_dir \
+		--logs-dir $CERTBOT_DIR/log_dir \
+		--agree-tos \
+		--non-interactive \
+		--email $LETSENCRYPT_ISSUER_EMAIL \
+		$@
+}
+
+create_certs \
 	-d $MAIN_DOMAIN \
 	-d *.$MAIN_DOMAIN \
 	-d *.in.$MAIN_DOMAIN \

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+  labels:
+    app: vault
+spec:
+  selector:
+    matchLabels:
+      app: vault
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      containers:
+      - name: vault
+        image: vault:1.5.2
+        command: ["vault"]
+        args:
+          - server
+          - -config=/vault/config/vault.hcl
+        ports:
+        - name: http
+          containerPort: 8200
+        securityContext:
+          capabilities:
+            add:
+              - IPC_LOCK
+        volumeMounts:
+        - name: config-configmap
+          mountPath: /vault/config/vault.hcl
+          subPath: vault.hcl
+        - name: data-storage
+          mountPath: /vault/data
+      volumes:
+      - name: config-configmap
+        configMap:
+          name: vault-configmap
+      - name: data-storage
+        hostPath:
+          path: /var/kubernetes/vault/datas
+          type: DirectoryOrCreate

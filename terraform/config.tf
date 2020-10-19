@@ -4,10 +4,12 @@ provider "digitalocean" {
 provider "ovh" {
 }
 
+data "digitalocean_kubernetes_versions" "main" {}
+
 resource "digitalocean_kubernetes_cluster" "my_cluster" {
     name    = "my-cluster"
     region  = "lon1"
-    version = "1.18.6-do.0"
+    version = data.digitalocean_kubernetes_versions.main.latest_version
     tags    = []
 
     node_pool {

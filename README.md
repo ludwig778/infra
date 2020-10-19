@@ -6,8 +6,9 @@ Such as:
 
 ``` bash
 # cat .envrc
-# This is a shared password, agreed upon by the users
-export INFRA_TLS_LOCKER_PASSWORD=*****
+# This is a shared password, to encrypt/decrypt terraform state and letsencrypt certs,
+# allowing them to be stored on github
+export INFRA_LOCKER_PASSWORD=*****
 
 # To access digital ocean APIs with terraform
 export DIGITALOCEAN_ACCESS_TOKEN=*****

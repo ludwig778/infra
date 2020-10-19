@@ -47,7 +47,7 @@ make handle
 
 ## Backup and restore existing certificates
 
-You can backup and restore certificates using the lock and unlock Makefile targets, using the password contained in the INFRA_TLS_LOCKER_PASSWORD env variable (which must be set to run these targets), and will create a commitable symetricaly encrypted .gpg file.
+You can backup and restore certificates using the lock and unlock Makefile targets, using the password contained in the INFRA_LOCKER_PASSWORD env variable (which must be set to run these targets), and will create a commitable symetricaly encrypted .gpg file.
 
 ``` bash
 # make lock

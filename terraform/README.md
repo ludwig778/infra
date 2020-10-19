@@ -20,7 +20,7 @@ export DIGITALOCEAN_ACCESS_TOKEN=*****
 
 ## Backup and restore states
 
-You can backup and restore states using the lock and unlock Makefile targets, using the password contained in the INFRA_TLS_LOCKER_PASSWORD env variable (which must be set to run these targets), and will create a commitable symmetrically encrypted .gpg file.
+You can backup and restore states using the lock and unlock Makefile targets, using the password contained in the INFRA_LOCKER_PASSWORD env variable (which must be set to run these targets), and will create a commitable symmetrically encrypted .gpg file.
 
 ``` bash
 # make lock

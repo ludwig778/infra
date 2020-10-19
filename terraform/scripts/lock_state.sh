@@ -1,20 +1,20 @@
 #!/bin/bash
 
 
-if [ -z "$INFRA_TLS_LOCKER_PASSWORD" ]
+if [ -z "$INFRA_LOCKER_PASSWORD" ]
 then
-	echo "\$INFRA_TLS_LOCKER_PASSWORD is not set"
+	echo "\$INFRA_LOCKER_PASSWORD is not set"
 	exit 1
 fi
 
-echo $INFRA_TLS_LOCKER_PASSWORD | gpg \
+echo $INFRA_LOCKER_PASSWORD | gpg \
 	--batch \
 	--yes \
 	--passphrase-fd 0 \
 	--output terraform_state.gpg \
 	--symmetric terraform.tfstate
 
-echo $INFRA_TLS_LOCKER_PASSWORD | gpg \
+echo $INFRA_LOCKER_PASSWORD | gpg \
 	--batch \
 	--yes \
 	--passphrase-fd 0 \

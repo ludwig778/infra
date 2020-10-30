@@ -1,15 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: vault
+  namespace: default
   annotations:
     traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
   rules:
-  - host: vault.in.my_domain.fr
+  - host: vault.in.$MAIN_DOMAIN
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: vault
-          servicePort: 8200
+          service:
+            name: vault
+            port:
+              number: 8200

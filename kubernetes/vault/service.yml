@@ -4,6 +4,7 @@ metadata:
   name: vault
   labels:
     app: vault
+  namespace: default
 spec:
   selector:
     app: vault

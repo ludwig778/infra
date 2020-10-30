@@ -1,5 +1,5 @@
 set_traefik:
-	kubectl delete -n kube-system deploy traefik-ingress-controller || true
+	kubectl delete -n kube-system deploy traefik || true
 	kubectl apply -f traefik/secret.yml
 	kubectl apply -f traefik/configmap.yml
 	kubectl apply -f traefik/service.yml

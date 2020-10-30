@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanboard
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: kanboard
+  template:
+    metadata:
+      name: kanboard
+      labels:
+        name: kanboard
+      namespace: default
+    spec:
+      containers:
+      - name: kanboard
+        image: kanboard/kanboard:v1.2.16
+        ports:
+        - containerPort: 80

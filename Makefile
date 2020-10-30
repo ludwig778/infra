@@ -14,4 +14,4 @@ setup_traefik:
 	make -C certbot unlock
 	./scripts/set_traefik_secret.yml
 	make -C certbot clean
-	make -C kubernetes restart_traefik
+	make -C kubernetes set_traefik

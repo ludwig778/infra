@@ -6,7 +6,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/redirect-entry-point: https
-    #traefik.ingress.kubernetes.io/whitelist-source-range: "192.168.0.0/24, 10.8.0.0/24"
 spec:
   rules:
   - host: traefik.in.$MAIN_DOMAIN
@@ -18,4 +17,4 @@ spec:
           service:
             name: traefik
             port:
-              number: 80
+              number: 8080

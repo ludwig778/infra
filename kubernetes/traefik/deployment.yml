@@ -19,7 +19,7 @@ spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:v1.7
+      - image: traefik:v2.3.2
         name: traefik
         ports:
         - name: http
@@ -30,11 +30,15 @@ spec:
           hostPort: 443
         - name: admin
           containerPort: 8080
+          hostPort: 8443
+        command:
+        - "sleep"
         args:
-        - --api
-        - --kubernetes
-        - --configfile=/config/traefik.toml
-        - --logLevel=INFO
+        - "6000"
+        #args:
+        #- "--api"
+        #- "--configfile=/config/traefik.toml"
+        #- "--log.level=DEBUG"
         volumeMounts:
         - mountPath: /ssl
           name: letsencrypt-ssl
